@@ -32,9 +32,6 @@ public class App {
             //String jsonText = readAll(br);
             //JSONObject json = new JSONObject(jsonText);
             
-            //It will replace with url read as below ..
-            //JSONObject json = new JSONObject(readJsonFromUrl(args[0]));
-            // or
             
             //args[1] is for the url from which JSON is returned 
             JSONObject json = readJsonFromUrl(args[1]);
@@ -48,15 +45,6 @@ public class App {
                 writer.println(txt);
                 writer.println("");
             }
-            /*
-            JSONArray txtArr = json.getJSONArray("article"); //Must change to the wiki's one, not "article"
-            for (int i = 0; i < txtArr.length(); ++i) {
-                JSONObject rec = txtArr.getJSONObject(i);
-                String txt = rec.getString("text"); //Must change to the wiki's one, not "text"
-                System.out.println(txt);
-                writer.println(txt);
-                writer.println("");
-            }*/
 
         } catch (IOException e) {
             e.printStackTrace();
