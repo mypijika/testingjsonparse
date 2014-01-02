@@ -23,16 +23,17 @@ public class App {
         try {
             //Open a new file, paragraphs will be written here
             writer = new PrintWriter("/home/mypijika/Documents/newCreatedFile.txt", "UTF-8");
+            
 
             //Test code with a file
-            br = new BufferedReader(new FileReader("/home/mypijika/Documents/test.json"));
-            String jsonText = readAll(br);
-            JSONObject json = new JSONObject(jsonText);
+            //br = new BufferedReader(new FileReader("/home/mypijika/Documents/test.json"));
+            //String jsonText = readAll(br);
+            //JSONObject json = new JSONObject(jsonText);
             
             //It will replace with url read as below ..
             //JSONObject json = new JSONObject(readJsonFromUrl(args[0]));
             // or
-            //JSONObject json = readJsonFromUrl("https://graph.facebook.com/19292868552");
+            JSONObject json = readJsonFromUrl("http://localhost:8983/solr/collection1/select?q=Atrocities&wt=json&indent=true");
             
             
             JSONArray jsonarr = json.getJSONObject("response").getJSONArray("docs");
@@ -72,7 +73,7 @@ public class App {
         //KEEP this bcz I can know what exception it throws
         //Will delete it soon
         try {
-            //JSONObject json = new JSONObject(readJsonFromUrl(args[0]));
+            //JSONObject json = new JSONObject(readJsonFromUrl(args[1]));
             JSONObject json = readJsonFromUrl("https://graph.facebook.com/19292868552");
 
             /*
