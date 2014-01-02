@@ -34,7 +34,16 @@ public class App {
             // or
             //JSONObject json = readJsonFromUrl("https://graph.facebook.com/19292868552");
             
-           
+            
+            JSONArray jsonarr = json.getJSONObject("response").getJSONArray("docs");
+            for (int i = 0; i < jsonarr.length(); i++) {
+                JSONObject obj = jsonarr.getJSONObject(i);
+                String txt = obj.getString("text"); 
+                System.out.println(txt);
+                writer.println(txt);
+                writer.println("");
+            }
+            /*
             JSONArray txtArr = json.getJSONArray("article"); //Must change to the wiki's one, not "article"
             for (int i = 0; i < txtArr.length(); ++i) {
                 JSONObject rec = txtArr.getJSONObject(i);
@@ -42,7 +51,7 @@ public class App {
                 System.out.println(txt);
                 writer.println(txt);
                 writer.println("");
-            }
+            }*/
 
         } catch (IOException e) {
             e.printStackTrace();
