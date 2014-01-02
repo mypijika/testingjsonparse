@@ -22,8 +22,10 @@ public class App {
 
         try {
             //Open a new file, paragraphs will be written here
-            writer = new PrintWriter("/home/mypijika/Documents/newCreatedFile.txt", "UTF-8");
+            //writer = new PrintWriter("/home/mypijika/Documents/newCreatedFile.txt", "UTF-8");
             
+            //args[0] is for the file to which paragraphs will be written 
+            writer = new PrintWriter(args[0], "UTF-8");
 
             //Test code with a file
             //br = new BufferedReader(new FileReader("/home/mypijika/Documents/test.json"));
@@ -33,7 +35,9 @@ public class App {
             //It will replace with url read as below ..
             //JSONObject json = new JSONObject(readJsonFromUrl(args[0]));
             // or
-            JSONObject json = readJsonFromUrl("http://localhost:8983/solr/collection1/select?q=Atrocities&wt=json&indent=true");
+            
+            //args[1] is for the url from which JSON is returned 
+            JSONObject json = readJsonFromUrl(args[1]);
             
             
             JSONArray jsonarr = json.getJSONObject("response").getJSONArray("docs");
@@ -65,31 +69,6 @@ public class App {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
-        }
-
-        
-        
-        
-        //KEEP this bcz I can know what exception it throws
-        //Will delete it soon
-        try {
-            //JSONObject json = new JSONObject(readJsonFromUrl(args[1]));
-            JSONObject json = readJsonFromUrl("https://graph.facebook.com/19292868552");
-
-            /*
-             JSONArray txtArr = json.getJSONArray("documents??"); 
-             for (int i = 0; i < txtArr.length(); ++i) {
-                JSONObject rec = txtArr.getJSONObject(i);
-                String txt = rec.getString("text");
-                System.out.println(txt);
-                writer.println(txt);
-                writer.println("");
-            }
-             */
-        } catch (JSONException e) {
-            e.printStackTrace();
-        } catch (IOException ex) {
-            ex.printStackTrace();
         }
 
     }
